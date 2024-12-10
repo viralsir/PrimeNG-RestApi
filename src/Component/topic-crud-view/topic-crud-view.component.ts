@@ -19,7 +19,7 @@ import {CommonModule} from '@angular/common';
     FormsModule,
     InputTextModule,
     ButtonModule,
-    Ripple,
+
     CommonModule
   ],
   templateUrl: './topic-crud-view.component.html',

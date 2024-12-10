@@ -1,6 +1,6 @@
 <div class="card">
   <p-toast></p-toast>
-  <p-table [value]="topicservice.getAllTopics()" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+  <p-table [value]="topicservice.topicList" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
     <ng-template pTemplate="header">
       <tr>
         <th style="width:20%">ID</th>
@@ -11,7 +11,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-topic let-editing="editing" let-ri="rowIndex">
       <tr [pEditableRow]="topic">
-        <td>
+        <td [pEditableColumn]="topic.id" pEditableColumnField="id">
           <p-cellEditor>
             <ng-template pTemplate="input">
               <input
@@ -52,8 +52,6 @@
           <div class="flex align-items-center justify-content-center gap-2">
             @if(!editing)
             {
-
-
             <button
               *ngIf="!editing"
               pButton
