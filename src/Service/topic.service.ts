@@ -30,6 +30,14 @@ export class TopicService {
        });
   }
 
+  updateTopic(topic:Topic): void {
+    this.httpclient.put("http://localhost:9090/topics",topic).subscribe((result:any)=>{
+    });
+  }
 
+  // deleteTopic(topic:Topic): void {
+  //   this.httpclient.delete("http://localhost:9090/topics",topic).subscribe((result:any)=>{
+  //   });
+  // }
 
 }

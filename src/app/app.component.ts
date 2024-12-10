@@ -32,6 +32,11 @@ export class AppComponent {
         routerLink:'topicview'
       },
       {
+        label: 'Curd View',
+        icon: 'pi pi-star',
+        routerLink:'topiccrudview'
+      },
+      {
         label: 'Topic',
         icon: 'pi pi-search',
         items: [

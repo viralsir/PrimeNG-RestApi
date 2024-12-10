@@ -1,0 +1,95 @@
+<div class="card">
+  <p-toast></p-toast>
+  <p-table [value]="topicservice.getAllTopics()" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:20%">ID</th>
+        <th style="width:20%">Name</th>
+        <th style="width:20%">Description</th>
+        <th style="width:20%"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-topic let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="topic">
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText type="text"
+                [(ngModel)]="topic.id" />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{topic.id}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText type="text"
+                [(ngModel)]="topic.name"
+                required />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{topic.name}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText type="text"
+                [(ngModel)]="topic.description" />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ topic.description }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <div class="flex align-items-center justify-content-center gap-2">
+            @if(!editing)
+            {
+
+
+            <button
+              *ngIf="!editing"
+              pButton
+              pRipple
+              type="button"
+              pInitEditableRow
+              icon="pi pi-pencil"
+              (click)="onRowEditInit(topic)"
+              class="p-button-rounded p-button-text">
+            </button>
+            }
+            @else
+            {
+            <button
+              *ngIf="editing"
+              pButton
+              pRipple
+              type="button"
+              pSaveEditableRow
+              icon="pi pi-check"
+              (click)="onRowEditSave(topic)"
+              class="p-button-rounded p-button-text p-button-success mr-2">
+            </button>
+            <button
+              *ngIf="editing"
+              pButton pRipple
+              type="button"
+              pCancelEditableRow
+              icon="pi pi-times"
+              (click)="onRowEditCancel(topic, ri)"
+              class="p-button-rounded p-button-text p-button-danger">
+            </button>
+            }
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
