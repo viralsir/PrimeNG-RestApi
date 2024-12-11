@@ -1,0 +1,41 @@
+<p>dropdown works!</p>
+<div class="col-4">
+
+
+<div class="card flex justify-content-center">
+  <p-dropdown
+    [options]="topicservice.topicList"
+    [(ngModel)]="selectedTopic"
+    optionLabel="name"
+    [filter]="true"
+    filterBy="name"
+    [showClear]="true"
+    placeholder="Select a Topic"
+    styleClass="w-20rem">
+    <ng-template pTemplate="filter" let-options="options">
+      <div class="flex gap-1">
+        <div class="p-inputgroup" (click)="$event.stopPropagation()">
+          <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+          <input
+            type="text"
+            pInputText
+            placeholder="Filter"
+            [(ngModel)]="filterValue"
+            (keyup)="customFilterFunction($event, options)" />
+        </div>
+        <button pButton icon="pi pi-times" (click)="resetFunction(options)"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="selectedItem" let-selectedOption>
+      <div class="flex align-items-center gap-2">
+         <div>{{ selectedOption.name }}</div>
+      </div>
+    </ng-template>
+    <ng-template let-topic pTemplate="item">
+      <div class="flex align-items-center gap-2">
+        <div>{{ topic.name }}</div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+</div>
+</div>
